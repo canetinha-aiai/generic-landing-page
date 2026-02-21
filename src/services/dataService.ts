@@ -289,7 +289,7 @@ export const fetchStoreData = async (url: string): Promise<StoreData> => {
       );
     }
 
-    console.log("Remote data source connected (Fresh sync).");
+    console.log("Remote data source connected (Fresh sync)");
     const arrayBuffer = await response.arrayBuffer();
     const workbook = XLSX.read(arrayBuffer, { type: "array" });
 
