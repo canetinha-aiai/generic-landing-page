@@ -84,15 +84,22 @@ const Header = () => {
     <header ref={headerRef} className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <div className="text-3xl font-bold font-brand text-brand-600">
-            <Link
-              to="/"
-              className="text-inherit"
-              onClick={() => window.scrollTo(0, 0)}
-            >
+          <Link
+            to="/"
+            className="flex items-center gap-3 text-inherit"
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            {businessInfo?.logo && (
+              <img
+                src={businessInfo.logo}
+                alt="Logo"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-brand-200 shadow-sm"
+              />
+            )}
+            <div className="text-2xl md:text-3xl font-bold font-brand text-brand-600">
               {businessInfo?.name}
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
 
         {/* Desktop Nav */}

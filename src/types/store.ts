@@ -9,6 +9,7 @@ export interface BusinessInfo {
   googlePlaceId?: string;
   primaryColor?: string;
   secondaryColor?: string;
+  logo?: string;
   deliveryLogos?: {
     ifood: string;
     food99: string;

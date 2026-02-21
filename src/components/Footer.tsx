@@ -16,9 +16,18 @@ const Footer = () => {
       className="bg-brand-50/80 pt-16 pb-8 border-t border-brand-100 scroll-mt-20"
     >
       <div className="container mx-auto px-4 text-center">
-        <h3 className="text-4xl font-bold font-brand text-brand-600 mb-6 block">
-          {businessInfo?.name}
-        </h3>
+        <div className="flex flex-col items-center justify-center mb-6 gap-3">
+          {businessInfo?.logo && (
+            <img
+              src={businessInfo.logo}
+              alt="Logo"
+              className="w-16 h-16 rounded-full object-cover border-2 border-brand-200 shadow-sm"
+            />
+          )}
+          <h3 className="text-4xl font-bold font-brand text-brand-600 block">
+            {businessInfo?.name}
+          </h3>
+        </div>
 
         <div className="flex justify-center gap-6 mb-8">
           <a

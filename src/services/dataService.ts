@@ -69,6 +69,7 @@ const BUSINESS_KEY_MAP: Record<string, keyof BusinessInfo> = {
   GooglePlaceId: "googlePlaceId",
   "Cor Primária": "primaryColor",
   "Cor Secundária": "secondaryColor",
+  Logo: "logo",
 };
 
 /**

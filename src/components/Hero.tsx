@@ -21,8 +21,8 @@ const Hero = () => {
         }}
       ></div>
 
-      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12 relative z-10">
-        <div className="md:w-1/2 text-center md:text-left">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
+        <div className="md:w-1/2 text-center md:text-left order-2 md:order-1">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -57,6 +57,26 @@ const Hero = () => {
             </div>
           </motion.div>
         </div>
+
+        {businessInfo?.logo && (
+          <div className="md:w-1/2 flex justify-center order-1 md:order-2">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="w-48 h-48 md:w-80 md:h-80 rounded-full border-8 border-white shadow-2xl overflow-hidden bg-brand-50 flex items-center justify-center">
+                <img
+                  src={businessInfo.logo}
+                  alt={`Logo ${businessInfo.name}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-56 h-56 md:w-96 md:h-96 bg-brand-300 rounded-full opacity-30 blur-2xl"></div>
+            </motion.div>
+          </div>
+        )}
       </div>
     </section>
   );
