@@ -10,6 +10,7 @@ import { AnimatePresence } from "framer-motion";
 import { CartProvider } from "./context/CartContext";
 import { DataProvider, useData } from "./context/DataContext";
 import LoadingScreen from "./components/LoadingScreen";
+import NotFoundPage from "./pages/NotFoundPage";
 import { useEffect } from "react";
 
 const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
@@ -58,6 +59,7 @@ function AppContent() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/cardapio" element={<MenuPage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
           <Footer />

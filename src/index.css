@@ -16,20 +16,20 @@
 /* ── Font & Color tokens (Default/Fallback values) ───────── */
 /* These are overridden by the Google Sheet data once loaded. */
 @theme {
-  --font-brand: "Great Vibes", cursive;   /* brand/logo font */
-  --font-sans:  "Outfit", sans-serif;     /* body font */
+  --font-brand: "Great Vibes", cursive; /* brand/logo font */
+  --font-sans: "Outfit", sans-serif; /* body font */
 
-  /* ── Default Brand color scale (#AA5F51 terracotta) ─────── */
-  --color-brand-50:  #FBF4F3;
-  --color-brand-100: #F3E3DF;
-  --color-brand-200: #E6C4BC;
-  --color-brand-300: #D49E93;
-  --color-brand-400: #BC7A6B;
-  --color-brand-500: #AA5F51;
-  --color-brand-600: #8F4F43;
-  --color-brand-700: #74403A;
-  --color-brand-800: #5D3430;
-  --color-brand-900: #4A2A27;
+  /* ── Default Brand color scale (Neutral Gray/Slate) ─────── */
+  --color-brand-50: #f8fafc;
+  --color-brand-100: #f1f5f9;
+  --color-brand-200: #e2e8f0;
+  --color-brand-300: #cbd5e1;
+  --color-brand-400: #94a3b8;
+  --color-brand-500: #64748b;
+  --color-brand-600: #475569;
+  --color-brand-700: #334155;
+  --color-brand-800: #1e293b;
+  --color-brand-900: #0f172a;
 }
 
 /* ── Global ─────────────────────────────────────────────────── */
@@ -39,5 +39,5 @@
 }
 
 body {
-    scroll-behavior: smooth !important;
+  scroll-behavior: smooth !important;
 }

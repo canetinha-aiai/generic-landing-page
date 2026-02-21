@@ -102,7 +102,8 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     root.style.setProperty("--color-brand-800", adjust(primary, -0.45));
     root.style.setProperty("--color-brand-900", adjust(primary, -0.6));
 
-    console.log("Brand theme applied from remote source:", primary);
+    localStorage.setItem("theme-primary-color", primary);
+    console.log("Brand theme applied from remote source & saved:", primary);
   }, [data.business?.primaryColor]);
 
   // ── Dynamic Document Title ──────────────────────────────────
