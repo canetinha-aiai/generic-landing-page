@@ -8,7 +8,7 @@ import { Plus } from "lucide-react";
 import { MenuItem } from "../types/store";
 
 const MenuPage = () => {
-  const { menu: items, loading } = useData();
+  const { menu: items, loading, business } = useData();
   const [activeCategory, setActiveCategory] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState<MenuItem[]>([]);
@@ -56,24 +56,34 @@ const MenuPage = () => {
     <div className="min-h-screen bg-brand-50/80 pb-20">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-brand-100/50 shadow-sm">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between gap-2">
           <Link
             to="/"
-            className="text-gray-500 hover:text-brand-600 transition-all flex items-center gap-1.5 group"
+            className="text-gray-500 hover:text-brand-600 transition-all flex items-center gap-1.5 group flex-1"
           >
             <ArrowLeft
               size={18}
               className="transform group-hover:-translate-x-1 transition-transform"
             />
-            <span className="font-bold text-sm tracking-tight uppercase">
+            <span className="font-bold text-sm tracking-tight uppercase hidden sm:block">
               Início
             </span>
           </Link>
-          <h1 className="text-3xl md:text-4xl font-brand text-brand-600 mt-1">
-            Nosso Cardápio
-          </h1>
-          <div className="w-16 hidden md:block"></div>{" "}
-          {/* Spacer for centering */}
+
+          <div className="flex items-center gap-2 md:gap-3 flex-none justify-center flex-row-reverse md:flex-row">
+            {business?.logo && (
+              <img
+                src={business.logo}
+                alt="Logo"
+                className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover border-2 border-brand-200 shadow-sm"
+              />
+            )}
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-brand text-brand-600 mt-1">
+              Nosso Cardápio
+            </h1>
+          </div>
+
+          <div className="flex-1 hidden sm:block"></div>
         </div>
       </header>
 
