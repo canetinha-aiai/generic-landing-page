@@ -10,11 +10,39 @@ import { AnimatePresence } from "framer-motion";
 import { CartProvider } from "./context/CartContext";
 import { DataProvider, useData } from "./context/DataContext";
 import LoadingScreen from "./components/LoadingScreen";
+import { useEffect } from "react";
 
 const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
 function AppContent() {
-  const { loading } = useData();
+  const { loading, business } = useData();
+
+  useEffect(() => {
+    if (!loading) {
+      const existingLinks = document.querySelectorAll(
+        "link[rel~='icon'], link[rel='apple-touch-icon']",
+      );
+
+      if (business?.favicon) {
+        if (existingLinks.length > 0) {
+          existingLinks.forEach((link) => {
+            (link as HTMLLinkElement).href = business.favicon!;
+            // Remove specific attributes so the browser doesn't reject it for mismatch
+            link.removeAttribute("sizes");
+            link.removeAttribute("type");
+          });
+        } else {
+          const newLink = document.createElement("link");
+          newLink.rel = "icon";
+          newLink.href = business.favicon;
+          document.head.appendChild(newLink);
+        }
+      } else {
+        // Remove favicons if none is provided
+        existingLinks.forEach((link) => link.remove());
+      }
+    }
+  }, [loading, business?.favicon]);
 
   return (
     <AnimatePresence mode="wait">

@@ -70,6 +70,7 @@ const BUSINESS_KEY_MAP: Record<string, keyof BusinessInfo> = {
   "Cor Primária": "primaryColor",
   "Cor Secundária": "secondaryColor",
   Logo: "logo",
+  Favicon: "favicon",
 };
 
 /**

@@ -10,6 +10,7 @@ export interface BusinessInfo {
   primaryColor?: string;
   secondaryColor?: string;
   logo?: string;
+  favicon?: string;
   deliveryLogos?: {
     ifood: string;
     food99: string;
