@@ -89,9 +89,9 @@ const Header = () => {
             className="flex items-center gap-3 text-inherit"
             onClick={() => window.scrollTo(0, 0)}
           >
-            {businessInfo?.logo && (
+            {businessInfo?.favicon && (
               <img
-                src={businessInfo.logo}
+                src={businessInfo.favicon}
                 alt="Logo"
                 className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-brand-200 shadow-sm"
               />

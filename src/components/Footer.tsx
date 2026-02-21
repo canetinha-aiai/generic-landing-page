@@ -17,9 +17,9 @@ const Footer = () => {
     >
       <div className="container mx-auto px-4 text-center">
         <div className="flex flex-col items-center justify-center mb-6 gap-3">
-          {businessInfo?.logo && (
+          {businessInfo?.favicon && (
             <img
-              src={businessInfo.logo}
+              src={businessInfo.favicon}
               alt="Logo"
               className="w-16 h-16 rounded-full object-cover border-2 border-brand-200 shadow-sm"
             />

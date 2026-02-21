@@ -71,9 +71,9 @@ const MenuPage = () => {
           </Link>
 
           <div className="flex items-center gap-2 md:gap-3 flex-none justify-center flex-row-reverse md:flex-row">
-            {business?.logo && (
+            {business?.favicon && (
               <img
-                src={business.logo}
+                src={business.favicon}
                 alt="Logo"
                 className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover border-2 border-brand-200 shadow-sm"
               />
