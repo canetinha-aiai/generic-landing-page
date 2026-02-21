@@ -1,0 +1,43 @@
+/* ════════════════════════════════════════════════════════════
+   THEME — Visual identity configuration
+   ════════════════════════════════════════════════════════════
+   To rebrand this app for a new client:
+     1. Edit src/data/theme.js  → colors & font names
+     2. Update the @import URLs below with your new fonts
+     3. Update the @theme block below with your new font names
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Fonts ─────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+/* ── Font & Color tokens (Default/Fallback values) ───────── */
+/* These are overridden by the Google Sheet data once loaded. */
+@theme {
+  --font-brand: "Great Vibes", cursive;   /* brand/logo font */
+  --font-sans:  "Outfit", sans-serif;     /* body font */
+
+  /* ── Default Brand color scale (#AA5F51 terracotta) ─────── */
+  --color-brand-50:  #FBF4F3;
+  --color-brand-100: #F3E3DF;
+  --color-brand-200: #E6C4BC;
+  --color-brand-300: #D49E93;
+  --color-brand-400: #BC7A6B;
+  --color-brand-500: #AA5F51;
+  --color-brand-600: #8F4F43;
+  --color-brand-700: #74403A;
+  --color-brand-800: #5D3430;
+  --color-brand-900: #4A2A27;
+}
+
+/* ── Global ─────────────────────────────────────────────────── */
+:root {
+  scroll-behavior: smooth !important;
+  font-family: "Outfit", sans-serif;
+}
+
+body {
+    scroll-behavior: smooth !important;
+}
