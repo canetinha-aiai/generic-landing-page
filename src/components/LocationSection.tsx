@@ -89,7 +89,7 @@ const LocationSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 font-brand mb-4">
@@ -104,7 +104,7 @@ const LocationSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           className="flex flex-col md:flex-row gap-12 items-center"
         >
           <div className="md:w-1/2 space-y-4 md:space-y-6">
@@ -117,7 +117,8 @@ const LocationSection = () => {
                 <h3 className="font-bold text-gray-800 text-base md:text-lg mb-1">
                   Endereço
                 </h3>
-                <a
+                <motion.a
+                  whileTap={{ scale: 0.95 }}
                   href={`https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${businessInfo?.googlePlaceId}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -125,17 +126,18 @@ const LocationSection = () => {
                 >
                   <span>{formattedAddress || "Carregando endereço..."}</span>
                   <ExternalLink className="w-3.5 h-3.5 flex-shrink-0 md:hidden" />
-                </a>
+                </motion.a>
                 {/* Link text only shown on desktop */}
                 <span className="hidden md:flex">
-                  <a
+                  <motion.a
+                    whileTap={{ scale: 0.95 }}
                     href={`https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${businessInfo?.googlePlaceId}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block mt-2 text-brand-600 font-medium hover:underline text-sm"
                   >
                     Ver no Google Maps
-                  </a>
+                  </motion.a>
                 </span>
               </div>
             </div>
@@ -149,7 +151,8 @@ const LocationSection = () => {
                 <h3 className="font-bold text-gray-800 text-base md:text-lg mb-1">
                   WhatsApp
                 </h3>
-                <a
+                <motion.a
+                  whileTap={{ scale: 0.95 }}
                   href={getWhatsappLink(businessInfo.phone)}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -157,17 +160,18 @@ const LocationSection = () => {
                 >
                   <span>{formatPhone(businessInfo.phone)}</span>
                   <ExternalLink className="w-3.5 h-3.5 flex-shrink-0 md:hidden" />
-                </a>
+                </motion.a>
                 {/* Link text only shown on desktop */}
                 <span className="hidden md:flex">
-                  <a
+                  <motion.a
+                    whileTap={{ scale: 0.95 }}
                     href={getWhatsappLink(businessInfo.phone)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block mt-2 text-green-600 font-medium hover:underline text-sm"
                   >
                     Chamar no WhatsApp
-                  </a>
+                  </motion.a>
                 </span>
               </div>
             </div>
@@ -185,7 +189,8 @@ const LocationSection = () => {
                 <p className="hidden md:block text-gray-600">
                   Acompanhe nossas novidades
                 </p>
-                <a
+                <motion.a
+                  whileTap={{ scale: 0.95 }}
                   href={
                     businessInfo?.instagram
                       ? `https://instagram.com/${businessInfo.instagram}`
@@ -196,7 +201,7 @@ const LocationSection = () => {
                   className="inline-block text-brand-600 font-medium hover:underline text-sm md:mt-2"
                 >
                   Seguir @{businessInfo?.instagram || "instagram"}
-                </a>
+                </motion.a>
               </div>
             </div>
           </div>
@@ -205,7 +210,7 @@ const LocationSection = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             className="md:w-1/2 w-full h-[400px] bg-gray-100 rounded-3xl overflow-hidden shadow-lg border-4 border-white relative"
           >
             <Map

@@ -29,14 +29,20 @@ const MenuSection = () => {
   return (
     <section id="menu" className="py-20 bg-white scroll-mt-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-50px" }}
+          className="text-center mb-10"
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-brand-600 font-brand mb-4">
             Destaques do Cardápio
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto mb-8 font-light text-lg">
             Destaques do nosso cardápio.
           </p>
-        </div>
+        </motion.div>
 
         <motion.div
           layout
@@ -50,11 +56,12 @@ const MenuSection = () => {
             <motion.div
               layout
               key={sweet.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-brand-100 flex flex-col h-full"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              whileHover={{ y: -8 }}
+              className="bg-white rounded-xl shadow-lg border-brand-100 flex flex-col h-full hover:shadow-2xl transition-shadow duration-300"
             >
               <div className="h-48 overflow-hidden relative group">
                 <img
@@ -82,13 +89,14 @@ const MenuSection = () => {
                   {sweet.description}
                 </p>
                 <div className="mt-auto">
-                  <button
+                  <motion.button
+                    whileTap={{ scale: 0.95 }}
                     onClick={() => addItem(sweet)}
-                    className="w-full flex items-center justify-center gap-2 bg-brand-50 text-brand-600 font-bold py-2 rounded-lg hover:bg-brand-100 active:scale-95 transition-all text-sm"
+                    className="w-full flex items-center justify-center gap-2 bg-brand-50 text-brand-600 font-bold py-2 rounded-lg hover:bg-brand-100 transition-colors text-sm"
                   >
                     <Plus className="w-4 h-4" />
                     Adicionar ao Pedido
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </motion.div>

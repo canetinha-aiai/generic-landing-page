@@ -26,11 +26,13 @@ const ReviewCard = ({ review, index }: { review: Review; index: number }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      viewport={{ once: true }}
-      className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-brand-50 flex flex-col h-full"
+      viewport={{ once: true, margin: "-50px" }}
+      whileHover={{ y: -5 }}
+      whileTap={{ scale: 0.98 }}
+      className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-2xl transition-shadow duration-300 border border-brand-50 flex flex-col h-full cursor-pointer"
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
@@ -110,6 +112,7 @@ const ReviewsSection = () => {
           setTotalReviews(p.userRatingCount || 0);
 
           const normalizedReviews: Review[] = (p.reviews || [])
+            .filter((r: any) => (r.rating || 0) >= 4)
             .slice(0, 4)
             .map((r: any) => ({
               author_name: r.authorAttribution?.displayName || "Cliente",
@@ -154,11 +157,18 @@ const ReviewsSection = () => {
   };
 
   if (!PLACE_ID) return null;
+  if (!loading && reviews.length === 0) return null;
 
   return (
     <section id="reviews" className="py-20 bg-brand-50/20 scroll-mt-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-50px" }}
+          className="text-center mb-12"
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 font-brand mb-4">
             O que dizem sobre nós
           </h2>
@@ -183,7 +193,7 @@ const ReviewsSection = () => {
               </p>
             </div>
           )}
-        </div>
+        </motion.div>
 
         {loading ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -226,7 +236,9 @@ const ReviewsSection = () => {
         )}
 
         <div className="text-center mt-12">
-          <a
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             href={`https://search.google.com/local/reviews?placeid=${PLACE_ID}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -234,7 +246,7 @@ const ReviewsSection = () => {
           >
             <Star size={18} />
             Ver todas as avaliações no Google
-          </a>
+          </motion.a>
         </div>
       </div>
     </section>
