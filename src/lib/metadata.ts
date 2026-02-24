@@ -21,9 +21,10 @@ export function buildMetadata(
   const metadata: Metadata = {
     title,
     description,
+    keywords: business?.keywords,
     openGraph: {
-      title,
-      description,
+      title: business?.ogTitle || title,
+      description: business?.ogDescription || description,
       locale: "pt_BR",
       type: "website",
     },

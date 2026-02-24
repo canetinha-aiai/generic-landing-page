@@ -71,6 +71,10 @@ const BUSINESS_KEY_MAP: Record<string, keyof BusinessInfo> = {
   "Cor Secundária": "secondaryColor",
   Logo: "logo",
   Favicon: "favicon",
+  Keywords: "keywords",
+  "Palavras-Chave": "keywords",
+  "Título Social": "ogTitle",
+  "Descrição Social": "ogDescription",
 };
 
 /**
@@ -311,8 +315,13 @@ export const fetchStoreData = async (url: string): Promise<StoreData> => {
       "Horários",
       "Horarios",
     ]);
+    const seoRows = getSheet(["SEO"]);
 
     const business = parseBusinessInfo(configRows);
+    if (seoRows) {
+      const seoInfo = parseBusinessInfo(seoRows);
+      Object.assign(business, seoInfo);
+    }
     const menu = parseMenu(menuRows);
     const openingHours = parseOpeningHours(hoursRows);
 

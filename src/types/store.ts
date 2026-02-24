@@ -11,6 +11,9 @@ export interface BusinessInfo {
   secondaryColor?: string;
   logo?: string;
   favicon?: string;
+  keywords?: string;
+  ogTitle?: string;
+  ogDescription?: string;
   deliveryLogos?: {
     ifood: string;
     food99: string;
