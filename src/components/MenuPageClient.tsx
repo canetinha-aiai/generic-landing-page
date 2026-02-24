@@ -142,9 +142,9 @@ function MenuContent() {
                 </div>
                 <div className="p-7 flex flex-col flex-grow">
                   <div className="flex justify-between items-start mb-3 gap-2">
-                    <h3 className="font-bold text-xl text-gray-800 leading-tight group-hover:text-brand-600 transition-colors">
+                    <h2 className="font-bold text-xl text-gray-800 leading-tight group-hover:text-brand-600 transition-colors">
                       {item.name}
-                    </h3>
+                    </h2>
                     <span className="text-brand-600 font-bold text-lg">
                       {formatPrice(item.price)}
                     </span>

@@ -88,6 +88,7 @@ const CartDrawer = () => {
               <button
                 onClick={() => setIsOpen(false)}
                 className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-all"
+                aria-label="Fechar carrinho"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -140,6 +141,7 @@ const CartDrawer = () => {
                           <button
                             onClick={() => removeItem(item.id)}
                             className="text-gray-300 hover:text-red-400 transition-colors p-1 -m-1"
+                            aria-label="Remover item"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>
@@ -156,6 +158,7 @@ const CartDrawer = () => {
                               updateQuantity(item.id, item.quantity - 1)
                             }
                             className="w-8 h-8 rounded-xl border border-gray-100 flex items-center justify-center hover:bg-gray-50 text-gray-600 transition-all active:scale-90"
+                            aria-label="Diminuir quantidade"
                           >
                             <Minus className="w-3.5 h-3.5" />
                           </button>
@@ -167,6 +170,7 @@ const CartDrawer = () => {
                               updateQuantity(item.id, item.quantity + 1)
                             }
                             className="w-8 h-8 rounded-xl border border-gray-100 flex items-center justify-center hover:bg-gray-50 text-gray-600 transition-all active:scale-90"
+                            aria-label="Aumentar quantidade"
                           >
                             <Plus className="w-3.5 h-3.5" />
                           </button>

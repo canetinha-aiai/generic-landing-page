@@ -132,6 +132,7 @@ const Header = () => {
         <button
           className="md:hidden text-gray-600 focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Menu"
         >
           {isOpen ? <X /> : <Menu />}
         </button>

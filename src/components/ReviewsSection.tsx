@@ -43,9 +43,9 @@ const ReviewCard = ({ review, index }: { review: Review; index: number }) => {
             referrerPolicy="no-referrer"
           />
           <div>
-            <h4 className="font-bold text-sm text-gray-800">
+            <h3 className="font-bold text-sm text-gray-800">
               {review.author_name}
-            </h4>
+            </h3>
             <div className="flex gap-0.5 mt-0.5">
               {[1, 2, 3, 4, 5].map((star) => (
                 <Star

@@ -26,12 +26,15 @@ async function checkSEO() {
       `Tagline:          ${business.tagline || "\x1b[90m(vazio)\x1b[0m"}`,
     );
     console.log(
-      `Descrição:        ${business.description || "\x1b[90m(vazio)\x1b[0m"}`,
+      `Descrição (Site): \x1b[32m${business.description || "\x1b[90m(vazio)\x1b[0m"}\x1b[0m`,
     );
 
     console.log("\n\x1b[1m[ Metadados de SEO ]\x1b[0m");
     console.log(
       `Palavras-chave:   \x1b[33m${business.keywords || "\x1b[90m(não configurado)\x1b[0m"}\x1b[0m`,
+    );
+    console.log(
+      `Descrição (Google): \x1b[34m${business.seoDescription || business.description || "\x1b[90m(vazio)\x1b[0m"}\x1b[0m`,
     );
 
     console.log("\n\x1b[1m[ Preview Social (Open Graph) ]\x1b[0m");

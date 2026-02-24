@@ -74,10 +74,12 @@ const BUSINESS_KEY_MAP: Record<string, keyof BusinessInfo> = {
   Keywords: "keywords",
   "Palavras-Chave": "keywords",
   "Palavras-chave": "keywords",
+  Descricao: "description",
   "Título Social": "ogTitle",
   "Titulo Social": "ogTitle",
   "Descrição Social": "ogDescription",
   "Descricao Social": "ogDescription",
+  "Link Canônico": "canonicalUrl",
 };
 
 /**
@@ -332,6 +334,11 @@ export const fetchStoreData = async (url: string): Promise<StoreData> => {
     const business = parseBusinessInfo(configRows);
     if (seoRows) {
       const seoInfo = parseBusinessInfo(seoRows);
+      // Transfer SEO description to a separate field to avoid overwriting the UI description
+      if (seoInfo.description) {
+        business.seoDescription = seoInfo.description;
+        delete (seoInfo as any).description;
+      }
       Object.assign(business, seoInfo);
     }
     const menu = parseMenu(menuRows);

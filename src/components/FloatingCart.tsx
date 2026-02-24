@@ -19,6 +19,7 @@ const FloatingCart = () => {
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(true)}
           className="fixed bottom-8 right-8 z-40 bg-brand-600 text-white rounded-3xl w-16 h-16 shadow-[0_20px_50px_rgba(170,95,81,0.3)] flex items-center justify-center transition-all group"
+          aria-label="Ver sacola"
         >
           {/* Shine effect container - handles clipping without affecting the badge */}
           <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none">

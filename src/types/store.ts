@@ -14,6 +14,8 @@ export interface BusinessInfo {
   keywords?: string;
   ogTitle?: string;
   ogDescription?: string;
+  seoDescription?: string;
+  canonicalUrl?: string;
   deliveryLogos?: {
     ifood: string;
     food99: string;

@@ -16,7 +16,7 @@ export function buildMetadata(
   const storeName = business?.name || FALLBACK_TITLE;
   const title = titlePrefix ? `${titlePrefix} — ${storeName}` : storeName;
   const description =
-    business?.description || business?.tagline || FALLBACK_DESCRIPTION;
+    business?.seoDescription || business?.description || FALLBACK_DESCRIPTION;
 
   const metadata: Metadata = {
     title,
@@ -27,6 +27,9 @@ export function buildMetadata(
       description: business?.ogDescription || description,
       locale: "pt_BR",
       type: "website",
+    },
+    alternates: {
+      canonical: business?.canonicalUrl,
     },
   };
 

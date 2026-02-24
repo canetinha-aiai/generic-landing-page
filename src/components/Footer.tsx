@@ -94,7 +94,7 @@ const Footer = () => {
           )}
         </motion.div>
 
-        <div className="text-gray-400 text-sm font-medium">
+        <div className="text-gray-600 text-sm font-medium">
           <p>
             &copy; {new Date().getFullYear()} {businessInfo?.name}. Todos os
             direitos reservados.
