@@ -73,8 +73,11 @@ const BUSINESS_KEY_MAP: Record<string, keyof BusinessInfo> = {
   Favicon: "favicon",
   Keywords: "keywords",
   "Palavras-Chave": "keywords",
+  "Palavras-chave": "keywords",
   "Título Social": "ogTitle",
+  "Titulo Social": "ogTitle",
   "Descrição Social": "ogDescription",
+  "Descricao Social": "ogDescription",
 };
 
 /**
@@ -93,6 +96,15 @@ const parseBusinessInfo = (rows: any[] | null): BusinessInfo => {
 
     const value =
       row[1] !== undefined && row[1] !== null ? String(row[1]).trim() : "";
+
+    // Skip header rows (e.g., "Nome" | "Valor" | "Uso")
+    if (
+      rawKey === "Nome" &&
+      (value === "Valor" || value === "Conteúdo" || value === "Uso")
+    )
+      return;
+    if (rawKey === "Informações de SEO") return;
+
     if (key) {
       (business as any)[key] = value;
     }

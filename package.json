@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check-seo": "node --env-file=.env node_modules/.bin/tsx scripts/check-seo.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
@@ -30,6 +31,7 @@
     "eslint-config-next": "^15.1.7",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
 }
