@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 import { useCart } from "../context/CartContext";
 import { useData } from "../context/DataContext";
@@ -65,10 +66,11 @@ const MenuSection = () => {
               className="bg-white rounded-xl shadow-lg border-brand-100 flex flex-col h-full hover:shadow-2xl transition-shadow duration-300"
             >
               <div className="h-48 overflow-hidden relative group">
-                <img
-                  src={sweet.image}
+                <Image
+                  src={sweet.image || ""}
                   alt={sweet.name}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-110"
                 />
                 <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md text-xs font-bold text-gray-600 shadow-sm">
                   {sweet.category}

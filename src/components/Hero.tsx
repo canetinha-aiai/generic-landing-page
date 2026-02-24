@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
@@ -124,10 +125,12 @@ const Hero = () => {
                 }}
                 className="w-48 h-48 md:w-80 md:h-80 rounded-full border-8 border-white shadow-2xl overflow-hidden bg-brand-50 flex items-center justify-center relative z-10"
               >
-                <img
+                <Image
                   src={businessInfo.logo}
                   alt={`Logo ${businessInfo.name}`}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  priority
                 />
               </motion.div>
               <motion.div

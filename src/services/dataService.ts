@@ -299,7 +299,6 @@ export const fetchStoreData = async (url: string): Promise<StoreData> => {
     const response = await fetch(fetchUrl, {
       credentials: "omit",
       redirect: "follow",
-      cache: "no-store",
     });
 
     if (!response.ok) {

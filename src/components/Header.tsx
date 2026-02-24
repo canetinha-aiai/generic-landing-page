@@ -5,6 +5,7 @@ import { Cake, Menu, X, MessageCircle } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 import { useData } from "../context/DataContext";
 import { getWhatsappLink } from "../utils/businessHelpers";
@@ -90,11 +91,14 @@ const Header = () => {
             onClick={() => window.scrollTo(0, 0)}
           >
             {businessInfo?.favicon && (
-              <img
-                src={businessInfo.favicon}
-                alt="Logo"
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-brand-200 shadow-sm"
-              />
+              <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-brand-200 shadow-sm">
+                <Image
+                  src={businessInfo.favicon}
+                  alt="Logo"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             )}
             <div className="text-2xl md:text-3xl font-bold font-brand text-brand-600">
               {businessInfo?.name}

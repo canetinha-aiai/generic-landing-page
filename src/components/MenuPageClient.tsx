@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Search, Plus } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCart } from "@/src/context/CartContext";
 import { DataProvider, useData } from "@/src/context/DataContext";
 import { StoreData, MenuItem } from "@/src/types/store";
@@ -69,11 +70,14 @@ function MenuContent() {
 
           <div className="flex items-center gap-2 md:gap-3 flex-none justify-center flex-row-reverse md:flex-row">
             {business?.favicon && (
-              <img
-                src={business.favicon}
-                alt="Logo"
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover border-2 border-brand-200 shadow-sm"
-              />
+              <div className="relative w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-brand-200 shadow-sm flex-none">
+                <Image
+                  src={business.favicon}
+                  alt="Logo"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             )}
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-brand text-brand-600 mt-1">
               Nosso Cardápio
@@ -131,12 +135,13 @@ function MenuContent() {
                 className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-brand-50 flex flex-col h-full group"
               >
                 <div className="h-60 overflow-hidden relative">
-                  <img
-                    src={item.image}
+                  <Image
+                    src={item.image || ""}
                     alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-black text-brand-600 shadow-sm">
+                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-black text-brand-600 shadow-sm z-10">
                     {item.category}
                   </div>
                 </div>

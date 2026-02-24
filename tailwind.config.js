@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Outfit", "sans-serif"],
-        brand: ["Great Vibes", "cursive"],
+        sans: ["var(--font-outfit)", "sans-serif"],
+        brand: ["var(--font-great-vibes)", "cursive"],
       },
       colors: {
         brand: {

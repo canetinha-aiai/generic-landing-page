@@ -2,6 +2,7 @@
 
 import { Instagram } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useData } from "../context/DataContext";
 
 const DEFAULT_LOGOS = {
@@ -27,11 +28,14 @@ const Footer = () => {
           className="flex flex-col items-center justify-center mb-6 gap-3"
         >
           {businessInfo?.favicon && (
-            <img
-              src={businessInfo.favicon}
-              alt="Logo"
-              className="w-16 h-16 rounded-full object-cover border-2 border-brand-200 shadow-sm"
-            />
+            <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-brand-200 shadow-sm flex-none">
+              <Image
+                src={businessInfo.favicon}
+                alt="Logo"
+                fill
+                className="object-cover"
+              />
+            </div>
           )}
           <h3 className="text-4xl font-bold font-brand text-brand-600 block">
             {businessInfo?.name}
@@ -66,13 +70,14 @@ const Footer = () => {
             href={businessInfo?.ifood || "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-red-100"
+            className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-red-100 relative"
             aria-label="iFood"
           >
-            <img
-              src={deliveryLogos?.ifood}
+            <Image
+              src={deliveryLogos?.ifood || ""}
               alt="iFood"
-              className="w-full h-full object-cover p-1"
+              fill
+              className="object-cover p-1"
             />
           </motion.a>
           {businessInfo?.food99 && (
@@ -82,13 +87,14 @@ const Footer = () => {
               href={businessInfo.food99}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-yellow-100"
+              className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-yellow-100 relative"
               aria-label="99Food"
             >
-              <img
-                src={deliveryLogos?.food99}
+              <Image
+                src={deliveryLogos?.food99 || ""}
                 alt="99Food"
-                className="w-full h-full object-cover mix-blend-multiply p-1"
+                fill
+                className="object-cover mix-blend-multiply p-1"
               />
             </motion.a>
           )}
