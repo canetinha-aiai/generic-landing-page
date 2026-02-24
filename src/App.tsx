@@ -13,6 +13,7 @@ import LoadingScreen from "./components/LoadingScreen";
 import NotFoundPage from "./pages/NotFoundPage";
 import { useEffect } from "react";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
@@ -87,6 +88,7 @@ function App() {
         </CartProvider>
       </DataProvider>
       <Analytics />
+      <SpeedInsights />
     </APIProvider>
   );
 }
