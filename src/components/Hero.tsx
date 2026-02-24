@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
@@ -78,7 +80,7 @@ const Hero = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link
-                  to="/cardapio"
+                  href="/cardapio"
                   className="bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all flex items-center justify-center gap-2 h-full w-full"
                   onClick={() => window.scrollTo(0, 0)}
                 >

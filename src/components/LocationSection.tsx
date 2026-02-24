@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import {
   MapPin,
@@ -43,7 +45,7 @@ const LocationSection = () => {
       try {
         // Using the New Places Library (v3.56+)
         const place = new placesLib.Place({
-          id: businessInfo.googlePlaceId,
+          id: businessInfo.googlePlaceId || "",
         });
 
         const results = await place.fetchFields({

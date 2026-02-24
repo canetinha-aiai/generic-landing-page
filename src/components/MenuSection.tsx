@@ -1,7 +1,8 @@
+"use client";
+
 import React from "react";
-// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 import { useCart } from "../context/CartContext";
 import { useData } from "../context/DataContext";
@@ -105,7 +106,7 @@ const MenuSection = () => {
 
         <div className="text-center mt-12">
           <Link
-            to="/cardapio"
+            href="/cardapio"
             className="inline-block bg-brand-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-brand-700 hover:scale-105 transition-all"
           >
             Ver cardápio completo

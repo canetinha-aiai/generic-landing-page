@@ -1,3 +1,5 @@
+"use client";
+
 import { Instagram } from "lucide-react";
 import { motion } from "framer-motion";
 import { useData } from "../context/DataContext";

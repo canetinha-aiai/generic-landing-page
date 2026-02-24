@@ -1,8 +1,10 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from "react";
 import { Cake, Menu, X, MessageCircle } from "lucide-react";
-// eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
 
 import { useData } from "../context/DataContext";
 import { getWhatsappLink } from "../utils/businessHelpers";
@@ -10,8 +12,8 @@ import { getWhatsappLink } from "../utils/businessHelpers";
 const Header = () => {
   const { business: businessInfo } = useData();
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
+  const router = useRouter();
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ const Header = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  if (location.pathname === "/cardapio") return null;
+  if (pathname === "/cardapio") return null;
 
   interface NavLink {
     name: string;
@@ -47,7 +49,7 @@ const Header = () => {
     if (link.type === "route") {
       e.preventDefault();
       setIsOpen(false);
-      navigate(link.href);
+      router.push(link.href);
       window.scrollTo(0, 0);
       return;
     }
@@ -66,12 +68,10 @@ const Header = () => {
       }
     };
 
-    if (location.pathname !== "/") {
-      navigate("/");
-      // Longer delay for page load + mobile rendering
+    if (pathname !== "/") {
+      router.push("/");
       setTimeout(scrollToTarget, 500);
     } else {
-      // Slight delay if menu was open to avoid layout shift conflicts
       if (menuWasOpen) {
         setTimeout(scrollToTarget, 300);
       } else {
@@ -85,7 +85,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Link
-            to="/"
+            href="/"
             className="flex items-center gap-3 text-inherit"
             onClick={() => window.scrollTo(0, 0)}
           >
@@ -109,7 +109,7 @@ const Header = () => {
               key={link.name}
               href={link.type === "scroll" ? `#${link.href}` : link.href}
               onClick={(e) => handleNavigation(e, link)}
-              className={`hover:text-brand-500 transition-colors cursor-pointer ${location.pathname === link.href ? "text-brand-600 font-bold" : ""}`}
+              className={`hover:text-brand-500 transition-colors cursor-pointer ${pathname === link.href ? "text-brand-600 font-bold" : ""}`}
             >
               {link.name}
             </a>

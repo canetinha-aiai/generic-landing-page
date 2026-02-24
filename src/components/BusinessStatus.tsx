@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from "react";
 import { Clock, ChevronDown, ChevronUp } from "lucide-react";
 // eslint-disable-next-line no-unused-vars

@@ -1,96 +1,66 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
-import { fetchStoreData } from "../services/dataService";
-import { StoreData } from "../types/store";
+"use client";
+
+import React, { createContext, useContext, useEffect, ReactNode } from "react";
+import {
+  StoreData,
+  BusinessInfo,
+  MenuItem,
+  OpeningHours,
+} from "../types/store";
 
 interface DataState extends StoreData {
   loading: boolean;
   error: string | null;
 }
 
+const defaultBusiness: BusinessInfo = { name: "", phone: "" };
+
 const initialState: DataState = {
-  business: {
-    name: "",
-    phone: "",
-  },
+  business: defaultBusiness,
   menu: [],
   openingHours: [],
-  loading: true,
+  loading: false,
   error: null,
 };
 
 const DataContext = createContext<DataState>(initialState);
 
-export const DataProvider = ({ children }: { children: ReactNode }) => {
-  const [data, setData] = useState<DataState>(initialState);
+interface DataProviderProps {
+  children: ReactNode;
+  initialData: StoreData | null;
+}
 
-  useEffect(() => {
-    const loadDocsData = async () => {
-      const baseUrl = import.meta.env.VITE_SHEET_BASE_URL;
-
-      if (!baseUrl) {
-        console.warn("VITE_SHEET_BASE_URL is missing. No data will be loaded.");
-        setData((prev) => ({ ...prev, loading: false }));
-        return;
-      }
-
-      try {
-        const remoteData = await fetchStoreData(baseUrl);
-        setData({
-          ...remoteData,
-          loading: false,
-          error: null,
-        });
-      } catch (err) {
-        console.error("Failed to load remote data:", err);
-        setData((prev) => ({
-          ...prev,
-          loading: false,
-          error: "Erro ao carregar dados da planilha.",
-        }));
-      }
-    };
-
-    loadDocsData();
-  }, []);
+export const DataProvider = ({ children, initialData }: DataProviderProps) => {
+  const data: DataState = initialData
+    ? { ...initialData, loading: false, error: null }
+    : { ...initialState, error: "Erro ao carregar dados da planilha." };
 
   // ── Dynamic Theme Injection ──────────────────────────────────
   useEffect(() => {
     const primary = data.business?.primaryColor;
     if (!primary || !/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(primary)) return;
 
-    const root = document.documentElement;
-
-    // Helper to adjust color (tints/shades)
     const adjust = (hex: string, amount: number) => {
-      const rVal = parseInt(hex.slice(1, 3), 16);
-      const gVal = parseInt(hex.slice(3, 5), 16);
-      const bVal = parseInt(hex.slice(5, 7), 16);
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
 
-      let r = rVal,
-        g = gVal,
-        b = bVal;
-
+      let rr = r,
+        gg = g,
+        bb = b;
       if (amount > 0) {
-        // Lighten
-        r = Math.round(r + (255 - r) * amount);
-        g = Math.round(g + (255 - g) * amount);
-        b = Math.round(b + (255 - b) * amount);
+        rr = Math.round(r + (255 - r) * amount);
+        gg = Math.round(g + (255 - g) * amount);
+        bb = Math.round(b + (255 - b) * amount);
       } else {
-        // Darken
-        r = Math.round(r * (1 + amount));
-        g = Math.round(g * (1 + amount));
-        b = Math.round(b * (1 + amount));
+        rr = Math.round(r * (1 + amount));
+        gg = Math.round(g * (1 + amount));
+        bb = Math.round(b * (1 + amount));
       }
-      return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+      return `#${rr.toString(16).padStart(2, "0")}${gg.toString(16).padStart(2, "0")}${bb.toString(16).padStart(2, "0")}`;
     };
 
-    // Apply scale
+    const root = document.documentElement;
     root.style.setProperty("--color-brand-50", adjust(primary, 0.92));
     root.style.setProperty("--color-brand-100", adjust(primary, 0.85));
     root.style.setProperty("--color-brand-200", adjust(primary, 0.7));
@@ -103,26 +73,37 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     root.style.setProperty("--color-brand-900", adjust(primary, -0.6));
 
     localStorage.setItem("theme-primary-color", primary);
-    console.log("Brand theme applied from remote source & saved:", primary);
   }, [data.business?.primaryColor]);
 
-  // ── Dynamic Document Title ──────────────────────────────────
+  // ── Dynamic Favicon Injection ────────────────────────────────
   useEffect(() => {
-    const storeName = data.business?.name || "Doceria";
-    if (data.loading) {
-      document.title = "Carregando...";
+    const faviconUrl = data.business?.favicon;
+    const existingLinks = document.querySelectorAll(
+      "link[rel~='icon'], link[rel='apple-touch-icon']",
+    );
+    if (faviconUrl) {
+      if (existingLinks.length > 0) {
+        existingLinks.forEach((link) => {
+          (link as HTMLLinkElement).href = faviconUrl;
+          link.removeAttribute("sizes");
+          link.removeAttribute("type");
+        });
+      } else {
+        const newLink = document.createElement("link");
+        newLink.rel = "icon";
+        newLink.href = faviconUrl;
+        document.head.appendChild(newLink);
+      }
     } else {
-      document.title = storeName;
+      existingLinks.forEach((link) => link.remove());
     }
-  }, [data.business?.name, data.loading]);
+  }, [data.business?.favicon]);
 
   return <DataContext.Provider value={data}>{children}</DataContext.Provider>;
 };
 
 export const useData = () => {
   const context = useContext(DataContext);
-  if (!context) {
-    throw new Error("useData must be used within a DataProvider");
-  }
+  if (!context) throw new Error("useData must be used within a DataProvider");
   return context;
 };

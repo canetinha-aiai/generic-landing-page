@@ -1,0 +1,36 @@
+/* ════════════════════════════════════════════════════════════
+   THEME — Visual identity configuration
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Fonts ─────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Default Brand color scale (Neutral Gray/Slate fallback) ─── */
+/* Overridden at runtime by the inline theme script in layout.tsx  */
+:root {
+  --color-brand-50: #f8fafc;
+  --color-brand-100: #f1f5f9;
+  --color-brand-200: #e2e8f0;
+  --color-brand-300: #cbd5e1;
+  --color-brand-400: #94a3b8;
+  --color-brand-500: #64748b;
+  --color-brand-600: #475569;
+  --color-brand-700: #334155;
+  --color-brand-800: #1e293b;
+  --color-brand-900: #0f172a;
+}
+
+/* ── Global ─────────────────────────────────────────────────── */
+:root {
+  scroll-behavior: smooth !important;
+  font-family: "Outfit", sans-serif;
+}
+
+body {
+  scroll-behavior: smooth !important;
+}

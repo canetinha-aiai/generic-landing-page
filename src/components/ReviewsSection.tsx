@@ -1,10 +1,10 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
-import { Star, MapPin, Quote } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 import { motion } from "framer-motion";
 import { useMapsLibrary } from "@vis.gl/react-google-maps";
 import { useData } from "../context/DataContext";
-
-const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
 interface Review {
   author_name: string;
