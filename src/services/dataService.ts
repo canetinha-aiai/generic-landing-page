@@ -320,9 +320,15 @@ export const fetchStoreData = async (url: string): Promise<StoreData> => {
     console.groupEnd();
 
     return { business, menu, openingHours };
-  } catch (error) {
+  } catch (error: any) {
     console.groupEnd();
-    console.error("[DataService] Error in fetchStoreData:", error);
+    // Next.js dynamic usage signals are not real errors to be logged in production build
+    if (
+      error?.digest !== "DYNAMIC_SERVER_USAGE" &&
+      error?.message !== "Dynamic server usage"
+    ) {
+      console.error("[DataService] Error in fetchStoreData:", error);
+    }
     throw error;
   }
 };

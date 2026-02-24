@@ -1,35 +1,68 @@
 {
   "pages": {
-    "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
-    ],
-    "/loading": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/loading.js"
+    "/_not-found/page": [
+      "static/chunks/webpack-2eb758dea75faf50.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-ebd51be49873d76c.js",
+      "static/chunks/main-app-1e9c0cd9a4321551.js",
+      "static/chunks/app/_not-found/page-f187ad254cc1b0eb.js"
     ],
     "/not-found": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/not-found.js"
+      "static/chunks/webpack-2eb758dea75faf50.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-ebd51be49873d76c.js",
+      "static/chunks/main-app-1e9c0cd9a4321551.js",
+      "static/chunks/111-bdf8a188e9d352f0.js",
+      "static/chunks/619-ba102abea3e3d0e4.js",
+      "static/chunks/app/not-found-b973164426528a7a.js"
     ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+    "/layout": [
+      "static/chunks/webpack-2eb758dea75faf50.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-ebd51be49873d76c.js",
+      "static/chunks/main-app-1e9c0cd9a4321551.js",
+      "static/css/3199eb149463c096.css",
+      "static/chunks/911-0310a6f39ebdecdf.js",
+      "static/chunks/app/layout-307ed4c9ca59f08c.js"
+    ],
+    "/loading": [
+      "static/chunks/webpack-2eb758dea75faf50.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-ebd51be49873d76c.js",
+      "static/chunks/main-app-1e9c0cd9a4321551.js",
+      "static/chunks/111-bdf8a188e9d352f0.js",
+      "static/chunks/app/loading-5a5dd427cb76fa0e.js"
     ],
     "/cardapio/loading": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/cardapio/loading.js"
+      "static/chunks/webpack-2eb758dea75faf50.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-ebd51be49873d76c.js",
+      "static/chunks/main-app-1e9c0cd9a4321551.js",
+      "static/chunks/111-bdf8a188e9d352f0.js",
+      "static/chunks/app/cardapio/loading-5a5dd427cb76fa0e.js"
     ],
     "/cardapio/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/cardapio/page.js"
+      "static/chunks/webpack-2eb758dea75faf50.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-ebd51be49873d76c.js",
+      "static/chunks/main-app-1e9c0cd9a4321551.js",
+      "static/chunks/111-bdf8a188e9d352f0.js",
+      "static/chunks/619-ba102abea3e3d0e4.js",
+      "static/chunks/733-68b01de92183353a.js",
+      "static/chunks/274-ded75ae1a4f52961.js",
+      "static/chunks/app/cardapio/page-6b321c5be7042f84.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-2eb758dea75faf50.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-ebd51be49873d76c.js",
+      "static/chunks/main-app-1e9c0cd9a4321551.js",
+      "static/chunks/111-bdf8a188e9d352f0.js",
+      "static/chunks/619-ba102abea3e3d0e4.js",
+      "static/chunks/911-0310a6f39ebdecdf.js",
+      "static/chunks/733-68b01de92183353a.js",
+      "static/chunks/274-ded75ae1a4f52961.js",
+      "static/chunks/app/page-117e4f46a08982e3.js"
     ]
   }
 }
