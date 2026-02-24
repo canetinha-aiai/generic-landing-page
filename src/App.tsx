@@ -12,6 +12,7 @@ import { DataProvider, useData } from "./context/DataContext";
 import LoadingScreen from "./components/LoadingScreen";
 import NotFoundPage from "./pages/NotFoundPage";
 import { useEffect } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
@@ -85,6 +86,7 @@ function App() {
           </Router>
         </CartProvider>
       </DataProvider>
+      <Analytics />
     </APIProvider>
   );
 }
