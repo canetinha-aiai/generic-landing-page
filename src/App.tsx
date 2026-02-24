@@ -84,11 +84,11 @@ function App() {
         <CartProvider>
           <Router>
             <AppContent />
+            <Analytics />
+            <SpeedInsights />
           </Router>
         </CartProvider>
       </DataProvider>
-      <Analytics />
-      <SpeedInsights />
     </APIProvider>
   );
 }
