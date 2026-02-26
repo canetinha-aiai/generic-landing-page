@@ -55,84 +55,86 @@ const BusinessStatus = () => {
 
       <AnimatePresence>
         {showHours && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            className="absolute top-full left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 mt-4 w-72 max-w-[90vw] bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-white/50 ring-1 ring-black/5 p-4 origin-top z-50"
-          >
-            <div className="flex justify-between items-center mb-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-gray-400">
-                Horários
-              </span>
-              <button
-                onClick={() => setShowHours(false)}
-                className="text-gray-400 hover:text-gray-600"
-              >
-                <span className="sr-only">Fechar</span>
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+          <div className="absolute top-full left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 mt-4 z-50">
+            <motion.div
+              initial={{ opacity: 0, y: 10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.95 }}
+              className="w-80 max-w-[90vw] sm:w-72 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-white/50 ring-1 ring-black/5 p-4 origin-top"
+            >
+              <div className="flex justify-between items-center mb-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                  Horários
+                </span>
+                <button
+                  onClick={() => setShowHours(false)}
+                  className="text-gray-400 hover:text-gray-600"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div className="space-y-1">
-              {hoursFormatted.map((item, index) => {
-                const isToday = item.dayIndex === new Date().getDay();
-                return (
-                  <div
-                    key={index}
-                    className={`flex items-start text-sm rounded-xl px-2 py-1.5 group transition-colors ${isToday ? "bg-brand-50" : ""}`}
+                  <span className="sr-only">Fechar</span>
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    <span
-                      className={`font-medium w-20 flex-shrink-0 inline-flex items-center gap-2 ${isToday ? "text-brand-700 font-bold" : "text-gray-600"}`}
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div className="space-y-1">
+                {hoursFormatted.map((item, index) => {
+                  const isToday = item.dayIndex === new Date().getDay();
+                  return (
+                    <div
+                      key={index}
+                      className={`flex items-start text-sm rounded-xl px-2 py-1.5 group transition-colors ${isToday ? "bg-brand-50" : ""}`}
                     >
-                      <span>{item.day}</span>
-                      {isToday && (
-                        <span className="text-[9px] bg-brand-500 text-white rounded-full px-1.5 py-0.5 font-bold uppercase tracking-wide leading-none">
-                          HOJE
-                        </span>
-                      )}
-                    </span>
-
-                    {/* Dotted separator */}
-                    <div className="flex-grow mx-2 border-b border-dotted border-gray-300 relative top-3 opacity-50"></div>
-
-                    <div className="flex flex-col items-end gap-1 min-w-[100px]">
-                      {item.ranges.length > 0 ? (
-                        item.ranges.map((range, idx) => (
-                          <span
-                            key={idx}
-                            className={`font-medium whitespace-nowrap ${isToday ? "text-brand-700" : "text-gray-800"}`}
-                          >
-                            {range.open} - {range.close}
+                      <span
+                        className={`font-medium w-20 flex-shrink-0 inline-flex items-center gap-2 ${isToday ? "text-brand-700 font-bold" : "text-gray-600"}`}
+                      >
+                        <span>{item.day}</span>
+                        {isToday && (
+                          <span className="text-[9px] bg-brand-500 text-white rounded-full px-1.5 py-0.5 font-bold uppercase tracking-wide leading-none">
+                            HOJE
                           </span>
-                        ))
-                      ) : (
-                        <span className="text-gray-400 italic font-light">
-                          Fechado
-                        </span>
-                      )}
+                        )}
+                      </span>
+
+                      {/* Dotted separator */}
+                      <div className="flex-grow mx-2 border-b border-dotted border-gray-300 relative top-3 opacity-50"></div>
+
+                      <div className="flex flex-col items-end gap-1 min-w-[100px]">
+                        {item.ranges.length > 0 ? (
+                          item.ranges.map((range, idx) => (
+                            <span
+                              key={idx}
+                              className={`font-medium whitespace-nowrap ${isToday ? "text-brand-700" : "text-gray-800"}`}
+                            >
+                              {range.open} - {range.close}
+                            </span>
+                          ))
+                        ) : (
+                          <span className="text-gray-400 italic font-light">
+                            Fechado
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="mt-4 pt-3 border-t border-gray-100">
-              <p className="text-xs text-center text-gray-400">
-                Horários podem variar em feriados
-              </p>
-            </div>
-          </motion.div>
+                  );
+                })}
+              </div>
+              <div className="mt-4 pt-3 border-t border-gray-100">
+                <p className="text-xs text-center text-gray-400">
+                  Horários podem variar em feriados
+                </p>
+              </div>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </div>

@@ -1,4 +1,5 @@
 import * as XLSX from "xlsx";
+import { CACHE_REVALIDATE } from "../lib/constants";
 import {
   StoreData,
   BusinessInfo,
@@ -291,14 +292,10 @@ export const fetchStoreData = async (url: string): Promise<StoreData> => {
   console.groupCollapsed(`[DataService] Sync Complete`);
 
   try {
-    const timestamp = new Date().getTime();
-    const fetchUrl = url.includes("?")
-      ? `${url}&t=${timestamp}`
-      : `${url}?t=${timestamp}`;
-
-    const response = await fetch(fetchUrl, {
+    const response = await fetch(url, {
       credentials: "omit",
       redirect: "follow",
+      next: { revalidate: CACHE_REVALIDATE.SHEET },
     });
 
     if (!response.ok) {

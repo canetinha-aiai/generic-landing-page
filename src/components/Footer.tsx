@@ -33,6 +33,7 @@ const Footer = () => {
                 src={businessInfo.favicon}
                 alt="Logo"
                 fill
+                sizes="64px"
                 className="object-cover"
               />
             </div>
@@ -77,6 +78,7 @@ const Footer = () => {
               src={deliveryLogos?.ifood || ""}
               alt="iFood"
               fill
+              sizes="40px"
               className="object-cover p-1"
             />
           </motion.a>
@@ -94,6 +96,7 @@ const Footer = () => {
                 src={deliveryLogos?.food99 || ""}
                 alt="99Food"
                 fill
+                sizes="40px"
                 className="object-cover mix-blend-multiply p-1"
               />
             </motion.a>

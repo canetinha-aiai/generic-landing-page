@@ -96,6 +96,7 @@ const Header = () => {
                   src={businessInfo.favicon}
                   alt="Logo"
                   fill
+                  sizes="(max-width: 768px) 40px, 48px"
                   className="object-cover"
                 />
               </div>

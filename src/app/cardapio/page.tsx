@@ -12,5 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function CardapioPage() {
   const data = await getData();
-  return <MenuPageClient initialData={data} />;
+  const isIFoodEnabled = process.env.ENABLE_IFOOD === "true";
+
+  return <MenuPageClient initialData={data} isIFoodEnabled={isIFoodEnabled} />;
 }

@@ -1,6 +1,12 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  ReactNode,
+} from "react";
 import {
   StoreData,
   BusinessInfo,
@@ -31,9 +37,13 @@ interface DataProviderProps {
 }
 
 export const DataProvider = ({ children, initialData }: DataProviderProps) => {
-  const data: DataState = initialData
-    ? { ...initialData, loading: false, error: null }
-    : { ...initialState, error: "Erro ao carregar dados da planilha." };
+  const data: DataState = useMemo(
+    () =>
+      initialData
+        ? { ...initialData, loading: false, error: null }
+        : { ...initialState, error: "Erro ao carregar dados da planilha." },
+    [initialData],
+  );
 
   // ── Dynamic Theme Injection ──────────────────────────────────
   useEffect(() => {

@@ -11,27 +11,32 @@ import DeliveryBanner from "@/src/components/DeliveryBanner";
 import MenuSection from "@/src/components/MenuSection";
 import ReviewsSection from "@/src/components/ReviewsSection";
 import LocationSection from "@/src/components/LocationSection";
+import { IFoodProvider } from "@/src/context/IFoodContext";
 
 export default function HomePageClient({
   initialData,
+  isIFoodEnabled,
 }: {
   initialData: StoreData | null;
+  isIFoodEnabled: boolean;
 }) {
   return (
-    <DataProvider initialData={initialData}>
-      <div className="min-h-screen bg-brand-50 text-gray-800 font-sans flex flex-col">
-        <Header />
-        <main className="flex-grow">
-          <Hero />
-          <DeliveryBanner />
-          <MenuSection />
-          <ReviewsSection />
-          <LocationSection />
-        </main>
-        <Footer />
-        <CartDrawer />
-        <FloatingCart />
-      </div>
-    </DataProvider>
+    <IFoodProvider isEnabled={isIFoodEnabled}>
+      <DataProvider initialData={initialData}>
+        <div className="min-h-screen bg-brand-50 text-gray-800 font-sans flex flex-col">
+          <Header />
+          <main className="flex-grow">
+            <Hero />
+            <DeliveryBanner />
+            <MenuSection />
+            <ReviewsSection />
+            <LocationSection />
+          </main>
+          <Footer />
+          <CartDrawer />
+          <FloatingCart />
+        </div>
+      </DataProvider>
+    </IFoodProvider>
   );
 }

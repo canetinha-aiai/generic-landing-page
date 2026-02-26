@@ -4,4 +4,3 @@ dist
 .vite
 .DS_Store
 .next
-.next/server

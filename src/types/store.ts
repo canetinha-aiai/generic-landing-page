@@ -27,9 +27,12 @@ export interface MenuItem {
   name: string;
   description?: string;
   price: number;
+  originalPrice?: number;
   category: string;
   image?: string;
   isHighlight: boolean;
+  serving?: string;
+  tags?: string[];
   options?: any;
 }
 

@@ -12,5 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function HomePage() {
   const data = await getData();
-  return <HomePageClient initialData={data} />;
+  const isIFoodEnabled = process.env.ENABLE_IFOOD === "true";
+
+  return <HomePageClient initialData={data} isIFoodEnabled={isIFoodEnabled} />;
 }
